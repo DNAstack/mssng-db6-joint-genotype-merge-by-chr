@@ -1,1 +1,4 @@
-# mssng-db6-joint-genotype-merge-by-chr
+# MSSNG DB6 Joint Genotyping Merge By Chromosome
+Merge shards corresponding to a single chromosome, then extract just those regions. `gvcf_URLs` is still required only for sample information. `region` should be a .bed file containing only single chromosome regions (e.g. `chr1.bed` contains `chr1	1	248956422`) (these files for GRCh38 are included in `bed_region_files/`). This will output one `GVCFtyper_main` and one `GVCFtyper_file` file per chromosome. The `GVCFtyper_main` file contains only columns 1-9 of a valid VCF; the `GVCFtyper_file` file contains all sample calls ([Sentieon documentation for more details](https://support.sentieon.com/appnotes/distributed_mode/)). This allows VQSR to be performed on the (much much smaller) `GVCFtyper_main` file, rather than on the entire final VCF.
+
+
